@@ -51,6 +51,17 @@
     </Sql>
     <Parameter name="SPMPayHeadId"/> 
     </SqlMethod>
-
+    <SqlMethod name="validador" type="preparedStatement" return="String">
+    <SqlMethodComment></SqlMethodComment>
+    <Sql>
+      <![CDATA[
+        select  COUNT(spc.spm_pay_head_id)
+          from spm_pay_comp_add spc
+          left join spm_pay_head sph on sph.spm_pay_head_id = spc.spm_pay_head_id
+          where spm_pay_comp_id = ? and sph.em_nl_sueldobruto='Y' 
+      ]]>
+    </Sql>
+    <Parameter name="SPMPayHeadId"/> 
+    </SqlMethod>
     
  </SqlClass>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+  <database name="MODIFIED TABLE SPM_PAY_COMP_DEDUCT">
+    <table name="SPM_PAY_COMP_DEDUCT" primaryKey="SPM_PAY_COMP_DEDUCT_KEY">
+      <column name="EM_NL_SDI" primaryKey="false" required="false" type="DECIMAL" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+    </table>
+  </database>

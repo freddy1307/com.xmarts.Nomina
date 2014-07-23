@@ -94,19 +94,23 @@ public class NL_CalculateSalary extends DalBaseProcess {
 		//En esta parte obtengo el sueldo bruto
 
 		NLAddicionData[] sueldobruto = NLAddicionData.sueldo_bruto(new DalConnectionProvider(),paycomp.getId());
-
-		if(sueldobruto.length == 0){
-			myMessage.setMessage("Error");
-		myMessage.setType("Error");
-		myMessage.setTitle(Utility
-				.messageBD(new DalConnectionProvider(), "Error no existe ningun adicciones de Sueldo Bruto", OBContext
+		String cont = NLAddicionData.validador(new DalConnectionProvider(),paycomp.getId());
+		 double co = Double.valueOf(cont);
+		if(co == 0){
+			System.out.println("entro el if");
+			myMessage.setMessage("No existe ningun adiccion que sea el Sueldo Bruto");
+			myMessage.setType("Error");
+			myMessage.setTitle(Utility
+			.messageBD(new DalConnectionProvider(), "Error", OBContext
 						.getOBContext().getLanguage().getLanguage()));
+			return myMessage;
 		}
-
+		
 		for(int x=0;x < sueldobruto.length; x++){
 			IDSUELDOBRUTO = sueldobruto[x].idhead;	
 			montoanual =  sueldobruto[x].montoanual;	
 			montomensual = sueldobruto[x].montomensual;	
+
 			
 		}
 		double mntanual =  new java.lang.Double(montoanual.toString());
